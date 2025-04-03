@@ -1,0 +1,25 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "![image](https://github.com/zyriab/portfolio/assets/2111910/4562131f-4fca-4e18-861b-25ea53961eaa)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "http-server -p 8080"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zyriab/portfolio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/zyriab/portfolio/issues"
+  },
+  "homepage": "https://github.com/zyriab/portfolio#readme",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}

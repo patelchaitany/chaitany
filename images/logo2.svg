@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="224" class="svgbob"><style>.svgbob line, .svgbob path, .svgbob circle, .svgbob rect, .svgbob polygon {
+    stroke: #c9d1d9;
+    stroke-width: 2;
+    stroke-opacity: 1;
+    fill-opacity: 1;
+    stroke-linecap: round;
+    stroke-linejoin: miter;
+}
+.svgbob text {
+    white-space: pre;
+    fill: #c9d1d9;
+    font-family: Iosevka Fixed, monospace;
+    font-size: 14px;
+}
+.svgbob rect.backdrop {
+    stroke: none;
+    fill: #0d1117;
+}
+.block-text {
+    font-family: monospace;
+    font-size: 16px;
+    fill: #c9d1d9;
+}
+.block-text-blue {
+    font-family: monospace;
+    font-size: 16px;
+    fill: #58a6ff;
+}
+.block-text-pink {
+    font-family: monospace;
+    font-size: 16px;
+    fill: #ff79c6;
+}
+</style>
+<rect class="backdrop" x="0" y="0" width="1000" height="224"></rect>
+<text x="150" y="60" class="block-text-blue"> ██████╗██╗  ██╗ █████╗ ██╗████████╗ █████╗ ███╗   ██╗██╗   ██╗</text>
+<text x="150" y="80" class="block-text">██╔════╝██║  ██║██╔══██╗██║╚══██╔══╝██╔══██╗████╗  ██║╚██╗ ██╔╝</text>
+<text x="150" y="100" class="block-text-pink">██║     ███████║███████║██║   ██║   ███████║██╔██╗ ██║ ╚████╔╝ </text>
+<text x="150" y="120" class="block-text">██║     ██╔══██║██╔══██║██║   ██║   ██╔══██║██║╚██╗██║  ╚██╔╝  </text>
+<text x="150" y="140" class="block-text-blue">╚██████╗██║  ██║██║  ██║██║   ██║   ██║  ██║██║ ╚████║   ██║   </text>
+<text x="150" y="160" class="block-text-pink"> ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝   ╚═╝   </text>
+</svg>

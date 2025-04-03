@@ -1,0 +1,35 @@
+{
+  "data": [
+    {
+      "content": [
+        "Hi, I'm {{Chaitany}} Patel 🤙",
+        "A {{Computer Science}} student and {{Machine Learning}} enthusiast."
+      ]
+    },
+    {
+      "content": [
+        "My primary focus is on {{Machine Learning}} and {{Deep Learning}}, with experience in developing various AI applications.",
+        "I also enjoy programming in {{C++}} and building {{innovative projects}}."
+      ]
+    },
+    {
+      "content": [
+        "I have a strong interest in {{Computer Vision}} and {{Generative AI}}, with projects in both areas.",
+        "I'm a {{passionate}} developer, always looking for new challenges and opportunities to learn and grow."
+      ]
+    },
+    {
+      "content": [
+        "You can connect with me on <a href=\"https://www.linkedin.com/in/chaitany-patel-7936aa252/\" target=\"_blank\" class=\"text-blue\">LinkedIn</a>.",
+        "Check out my projects and code on <a href=\"https://github.com/patelchaitany\" target=\"_blank\" class=\"text-pink\">GitHub</a>.",
+        "Feel free to email me at <a href=\"mailto:patelchaitany93@gmail.com\" class=\"text-orange\">patelchaitany93@gmail.com</a>."
+      ]
+    },
+    {
+      "content": [
+        "{{Click}} on a section on the left to learn more about my {{work}} and {{skills}}.",
+        "You can also {{navigate}} through the sections using the {{arrow keys}} or {{Vim motions}}."
+      ]
+    }
+  ]
+}

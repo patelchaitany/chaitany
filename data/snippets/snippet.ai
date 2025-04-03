@@ -1,0 +1,165 @@
+// Example of AI-assisted programming workflow in JavaScript
+
+/**
+ * AI-Assisted Development Workflow Example
+ * 
+ * This file demonstrates how I integrate AI tools like GitHub Copilot
+ * and Claude into my development process for increased productivity.
+ */
+
+// WORKFLOW STAGE 1: Architecture Planning with AI
+/*
+ * Prompt to AI Assistant:
+ * "I need to build a user authentication system with JWT in Express.js.
+ * Please outline the key components and files needed, including middleware
+ * for protecting routes."
+ * 
+ * AI Response (summarized):
+ * - Create auth controller with register/login functions
+ * - Implement JWT token generation and verification
+ * - Add middleware for protected routes
+ * - Set up user model with password hashing
+ * - Create configuration for JWT secrets
+ */
+
+// WORKFLOW STAGE 2: Use AI to scaffold the initial code structure
+// Below is how I'd implement auth middleware with AI assistance:
+
+/**
+ * Authentication middleware to protect routes
+ * Verifies JWT token and attaches user to request object
+ */
+const authMiddleware = async (req, res, next) => {
+  try {
+    // Get token from Authorization header
+    const authHeader = req.headers.authorization;
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+      return res.status(401).json({ message: 'Access denied. No token provided.' });
+    }
+
+    const token = authHeader.split(' ')[1];
+    
+    // Verify token
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    
+    // Find user by id
+    const user = await User.findById(decoded.userId).select('-password');
+    if (!user) {
+      return res.status(401).json({ message: 'Invalid token. User not found.' });
+    }
+    
+    // Attach user to request object
+    req.user = user;
+    next();
+  } catch (error) {
+    if (error.name === 'JsonWebTokenError') {
+      return res.status(401).json({ message: 'Invalid token.' });
+    } else if (error.name === 'TokenExpiredError') {
+      return res.status(401).json({ message: 'Token expired.' });
+    }
+    res.status(500).json({ message: 'Server error.' });
+  }
+};
+
+// WORKFLOW STAGE 3: Refine with targeted AI assistance
+// When implementing complex logic, I use AI for specific tasks:
+
+/**
+ * Password reset token generation and validation
+ * (asked AI for best practices on secure token generation)
+ */
+const generateResetToken = () => {
+  // AI suggested using crypto for secure random token generation
+  const resetToken = crypto.randomBytes(32).toString('hex');
+  
+  // Store hashed version for security (AI best practice recommendation)
+  const hashedToken = crypto
+    .createHash('sha256')
+    .update(resetToken)
+    .digest('hex');
+    
+  // Set expiry (AI suggested 10 minute window as security best practice)
+  const tokenExpiry = Date.now() + 10 * 60 * 1000;
+  
+  return { resetToken, hashedToken, tokenExpiry };
+};
+
+// WORKFLOW STAGE 4: Using AI for testing
+// AI can help generate test cases and test code
+
+/**
+ * Test for auth middleware (generated with AI assistance)
+ */
+describe('Auth Middleware', () => {
+  it('should return 401 if no token is provided', async () => {
+    // Setup request with no auth header
+    const req = {
+      headers: {}
+    };
+    const res = {
+      status: jest.fn().mockReturnThis(),
+      json: jest.fn()
+    };
+    const next = jest.fn();
+
+    // Call middleware
+    await authMiddleware(req, res, next);
+    
+    // Assertions
+    expect(res.status).toHaveBeenCalledWith(401);
+    expect(res.json).toHaveBeenCalledWith({ 
+      message: 'Access denied. No token provided.' 
+    });
+    expect(next).not.toHaveBeenCalled();
+  });
+  
+  // Additional tests would follow...
+});
+
+// WORKFLOW STAGE 5: Documentation with AI
+// I frequently use AI to help with documentation
+
+/**
+ * @swagger
+ * /api/auth/login:
+ *   post:
+ *     summary: Authenticate user and get token
+ *     description: Endpoint to authenticate existing users and provide a JWT authentication token.
+ *     tags: [Authentication]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - email
+ *               - password
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 format: email
+ *               password:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Authentication successful
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 token:
+ *                   type: string
+ *                 user:
+ *                   type: object
+ */
+
+// MY REAL-WORLD PROCESS:
+// 1. Start with high-level AI guidance on architecture and patterns
+// 2. Use AI to scaffold initial code structure
+// 3. Manually review and modify critical sections
+// 4. Leverage AI for complex logic suggestions
+// 5. Ask AI for test cases and edge cases
+// 6. Use AI for documentation generation
+// 7. Always review all AI-generated code for security and correctness 

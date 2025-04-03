@@ -1,0 +1,90 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from typing import List, Tuple, Optional
+
+class NeuralNetwork:
+    """A simple neural network implementation in Python."""
+    
+    def __init__(self, layer_sizes: List[int]):
+        """Initialize the neural network with given layer sizes.
+        
+        Args:
+            layer_sizes: List containing the number of neurons in each layer
+        """
+        self.layer_sizes = layer_sizes
+        self.weights = []
+        self.biases = []
+        
+        # Initialize weights and biases
+        for i in range(len(layer_sizes) - 1):
+            # He initialization for weights
+            self.weights.append(
+                np.random.randn(layer_sizes[i], layer_sizes[i+1]) * 
+                np.sqrt(2 / layer_sizes[i])
+            )
+            # Initialize biases with zeros
+            self.biases.append(np.zeros((1, layer_sizes[i+1])))
+    
+    def forward(self, X: np.ndarray) -> np.ndarray:
+        """Perform forward pass through the network.
+        
+        Args:
+            X: Input data of shape (batch_size, input_features)
+            
+        Returns:
+            Output activations
+        """
+        # Store activations for backpropagation
+        self.activations = [X]
+        self.z_values = []
+        
+        # Forward pass through each layer
+        activation = X
+        for w, b in zip(self.weights, self.biases):
+            z = np.dot(activation, w) + b
+            self.z_values.append(z)
+            
+            # Apply ReLU activation for hidden layers
+            activation = np.maximum(0, z)
+            self.activations.append(activation)
+        
+        # Apply softmax to the output layer
+        exp_scores = np.exp(z - np.max(z, axis=1, keepdims=True))
+        self.activations[-1] = exp_scores / np.sum(exp_scores, axis=1, keepdims=True)
+        
+        return self.activations[-1]
+    
+    def visualize_predictions(self, X_test: np.ndarray, y_test: np.ndarray) -> None:
+        """Visualize model predictions on test data.
+        
+        Args:
+            X_test: Test input data
+            y_test: True labels for test data
+        """
+        predictions = self.forward(X_test)
+        predicted_classes = np.argmax(predictions, axis=1)
+        
+        plt.figure(figsize=(10, 6))
+        for i in range(min(9, len(X_test))):
+            plt.subplot(3, 3, i+1)
+            plt.imshow(X_test[i].reshape(28, 28), cmap='gray')
+            plt.title(f"Pred: {predicted_classes[i]}, True: {y_test[i]}")
+            plt.axis('off')
+        
+        plt.tight_layout()
+        plt.show()
+
+# Usage example
+if __name__ == "__main__":
+    # Create a simple neural network for MNIST
+    model = NeuralNetwork([784, 128, 64, 10])
+    
+    # Load and preprocess data would go here
+    # model.train(X_train, y_train, epochs=10)
+    
+    # Example input (28x28 MNIST image flattened)
+    sample_input = np.random.rand(1, 784)
+    
+    # Get predictions
+    predictions = model.forward(sample_input)
+    print(f"Predicted class: {np.argmax(predictions)}") 

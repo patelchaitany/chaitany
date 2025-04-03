@@ -1,0 +1,96 @@
+{
+  "data": [
+    {
+      "name": " C/C++",
+      "content": [
+        "C++ is a {{powerful programming language}} that I use extensively for {{high-performance computing}} and {{systems programming}}.",
+        "I've developed several projects in C++, including {{TensorGrad}}, a library for tensor operations with automatic gradient computation, and a {{2D game engine}} built from scratch.",
+        "C++ allows me to create {{efficient}} and {{optimized}} code for applications that require {{high performance}} and {{low-level control}}.",
+        "I particularly enjoy working with C++ for {{machine learning}} implementations and {{graphics programming}}, where performance is critical."
+      ],
+      "snippet": "cpp"
+    },
+    {
+      "name": " Python",
+      "content": [
+        "Python is my {{go-to language}} for {{machine learning}}, {{data science}}, and {{rapid prototyping}}.",
+        "I've used Python extensively for developing {{AI applications}}, including {{computer vision systems}}, {{deep learning models}}, and {{natural language processing}} tools.",
+        "Some of my notable Python projects include {{Copilot-for-Linux}}, a document search system using word embeddings, and {{SHI}}, a deep fake detection system using computer vision techniques.",
+        "I appreciate Python's {{rich ecosystem}} of libraries like TensorFlow, PyTorch, and OpenCV that enable me to quickly implement complex algorithms and models."
+      ],
+      "snippet": "python"
+    },
+    {
+      "name": " Machine Learning",
+      "content": [
+        "Machine Learning is my {{primary area of expertise}} and {{passion}}. I've worked on various ML projects ranging from {{computer vision}} to {{natural language processing}}.",
+        "I have experience with both {{traditional ML algorithms}} and {{deep learning}} techniques, including neural networks, decision trees, and ensemble methods.",
+        "My projects like {{TensorGrad}} demonstrate my understanding of the mathematical foundations of machine learning, including {{automatic differentiation}} and {{gradient-based optimization}}.",
+        "I enjoy staying up-to-date with the latest advancements in the field and applying them to solve real-world problems."
+      ],
+      "snippet": "ml"
+    },
+    {
+      "name": " Computer Vision",
+      "content": [
+        "Computer Vision is one of my {{specialized areas}} within machine learning. I've implemented various CV algorithms and techniques in my projects.",
+        "My repository {{computer-vision}} contains implementations of fundamental algorithms like {{corner detection}}, {{edge detection}}, and {{feature extraction}}.",
+        "I've applied computer vision techniques in practical applications like {{SHI}}, a deep fake detection system that analyzes facial features and movements.",
+        "I'm familiar with libraries like {{OpenCV}} and frameworks like {{TensorFlow}} and {{PyTorch}} for implementing computer vision solutions."
+      ],
+      "snippet": "cv"
+    },
+    {
+      "name": " Deep Learning",
+      "content": [
+        "Deep Learning is a {{fascinating field}} that I've explored extensively through various projects and implementations.",
+        "I've worked with different neural network architectures including {{CNNs}}, {{RNNs}}, and {{Transformers}} for tasks ranging from image recognition to sequence generation.",
+        "My project {{Piano-Roll-Generation}} uses transformer models to generate music, demonstrating my ability to apply deep learning to creative domains.",
+        "I've implemented deep learning models from scratch in my {{TensorGrad}} library, giving me a deep understanding of the underlying mathematics and algorithms."
+      ],
+      "snippet": "dl"
+    },
+    {
+      "name": " Git",
+      "content": [
+        "Git is an {{essential tool}} in my development workflow for {{version control}} and {{collaboration}}.",
+        "I use Git for all my projects, maintaining clean commit histories and organizing my work through branches and pull requests.",
+        "I'm comfortable with advanced Git operations like rebasing, merging, and resolving conflicts.",
+        "Git helps me maintain code quality and track changes effectively across all my projects.",
+        "In my daily programming routine, I integrate Git through practices like {{feature branch workflows}}, {{commit-then-push cycles}}, and {{continuous integration}}.",
+        "My typical Git workflow includes: creating focused branches for features, making atomic commits with descriptive messages, regularly pushing to remote repositories, and using pull requests for code review.",
+        "I've set up {{Git hooks}} to automate tasks like linting and testing before commits, ensuring code quality throughout the development process.",
+        "For collaborative projects, I leverage Git's features for {{merge conflict resolution}}, {{code reviews}} via pull requests, and {{release management}} using tags and semantic versioning."
+      ],
+      "snippet": "git"
+    },
+    {
+      "name": " Linux",
+      "content": [
+        "Linux is my {{preferred operating system}} for development and daily use.",
+        "I'm comfortable with the Linux command line and use it extensively for tasks ranging from system administration to development.",
+        "My project {{Copilot-for-Linux}} demonstrates my ability to develop tools specifically for the Linux environment.",
+        "I appreciate the flexibility and power that Linux provides for development and experimentation.",
+        "In my programming routine, I leverage Linux's powerful {{shell scripting}} capabilities to automate repetitive tasks and streamline my workflow.",
+        "I use tools like {{tmux}} for terminal multiplexing, allowing me to manage multiple coding sessions and processes simultaneously.",
+        "My development environment includes customized {{Vim/Neovim}} configurations for efficient text editing, along with {{Bash aliases}} and {{custom scripts}} to increase productivity.",
+        "I utilize Linux's package management systems to maintain up-to-date development tools and libraries, and take advantage of {{containerization}} with Docker for consistent development environments."
+      ],
+      "snippet": "linux"
+    },
+    {
+      "name": " AI Assisted Programming",
+      "content": [
+        "AI Assisted Programming is a {{modern approach}} to software development that I've embraced to enhance my productivity.",
+        "I use tools like GitHub Copilot to accelerate development while maintaining a critical understanding of the code being generated.",
+        "I believe in combining AI assistance with strong fundamentals in computer science and software engineering.",
+        "This approach allows me to focus on higher-level design and problem-solving while automating more routine coding tasks.",
+        "In my daily programming routine, I integrate AI tools like {{GitHub Copilot}} and {{Cursor}} to boost productivity while maintaining code quality and understanding.",
+        "My workflow includes using AI for {{code completion}}, {{documentation generation}}, and {{refactoring suggestions}} while critically reviewing all AI-generated code.",
+        "I've developed a balanced approach where I leverage AI for {{boilerplate code}} and {{common patterns}}, while manually implementing critical algorithms and business logic.",
+        "For complex projects, I use AI assistants to help with {{API exploration}}, {{debugging suggestions}}, and {{test case generation}}, which significantly speeds up development cycles while ensuring robust code."
+      ],
+      "snippet": "ai"
+    }
+  ]
+}

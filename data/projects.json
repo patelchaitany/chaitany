@@ -1,0 +1,187 @@
+{
+  "data": [
+    {
+      "name": "TensorGrad",
+      "year": 2025,
+      "githubUrl": "https://github.com/patelchaitany/TensorGrad",
+      "content": [
+        "TensorGrad is a {{high-performance C++ library}} for tensor operations with {{automatic gradient computation}} support, designed for machine learning applications.",
+        "The library features comprehensive {{tensor operations}} including matrix multiplication, element-wise operations, and activation functions, with full {{automatic differentiation}} capabilities for training neural networks."
+      ],
+      "technologies": [
+        "{{C++}}",
+        "Boost",
+        "{{Automatic Differentiation}}",
+        "Neural Networks",
+        "{{High-Performance Computing}}"
+      ]
+    },
+    {
+      "name": "Copilot-for-Linux",
+      "year": 2024,
+      "githubUrl": "https://github.com/patelchaitany/Copilot-for-Linux",
+      "content": [
+        "Copilot-for-Linux is a solution to {{search across all PDF files}} on a system using {{word embeddings}} for summarization. By leveraging the power of Word2Vec, the project can find and return relevant documents based on user queries.",
+        "The project uses {{ChromaDB}} for efficient vector storage and retrieval, making it possible to find semantically similar content even when exact keywords aren't present in the documents."
+      ],
+      "technologies": [
+        "{{Python}}",
+        "ChromaDB",
+        "{{Word Embeddings}}",
+        "Natural Language Processing",
+        "{{Document Retrieval}}",
+        "Ollama API"
+      ]
+    },
+    {
+      "name": "SHI",
+      "year": 2024,
+      "githubUrl": "https://github.com/patelchaitany/SHI",
+      "content": [
+        "SHI is a {{deep fake detection}} system using AI/ML techniques to identify face-swap based deep fake videos. This project was developed for the Smart India Hackathon 2024.",
+        "The system combines {{multiple detection approaches}} including lip forgery detection and face anomaly detection to create a comprehensive and robust deepfake detection framework that can adapt to evolving deepfake methods."
+      ],
+      "technologies": [
+        "{{Python}}",
+        "TensorFlow",
+        "{{Computer Vision}}",
+        "Blaze-Face",
+        "{{VGG16}}",
+        "Marlin",
+        "{{Lip-Sync Detection}}"
+      ]
+    },
+    {
+      "name": "Piano-Roll-Generation",
+      "year": 2024,
+      "githubUrl": "https://github.com/patelchaitany/Piano-Roll-Genration",
+      "content": [
+        "Piano-Roll-Generation is a project for {{generating piano music}} using transformer-based models. The system can create original piano compositions by learning patterns from MIDI files.",
+        "The project implements a {{bigram model}} with transformer architecture to understand and generate musical sequences, demonstrating the application of NLP techniques to music generation."
+      ],
+      "technologies": [
+        "{{Python}}",
+        "Deep Learning",
+        "{{Transformer}}",
+        "Music Generation",
+        "{{MIDI Processing}}",
+        "Generative AI"
+      ]
+    },
+    {
+      "name": "2D-game-engine",
+      "year": 2023,
+      "githubUrl": "https://github.com/patelchaitany/2D-game-engine",
+      "content": [
+        "This project is a {{custom 2D game engine}} built from scratch in C++. It was developed to understand the inner workings of game engines and graphics programming.",
+        "The engine includes components for {{rendering}}, {{physics}}, and {{input handling}}, providing a foundation for creating 2D games with modern graphics capabilities."
+      ],
+      "technologies": [
+        "{{C++}}",
+        "OpenGL",
+        "{{GLSL}}",
+        "Game Development",
+        "{{Graphics Programming}}"
+      ]
+    },
+    {
+      "name": "Chess",
+      "year": 2024,
+      "githubUrl": "https://github.com/patelchaitany/Chess",
+      "content": [
+        "A {{chess game implementation}} with AI capabilities using Python and Pygame. The project features a complete chess ruleset with all standard moves and special rules.",
+        "The AI opponent uses {{Monte Carlo Tree Search}} algorithms to evaluate positions and determine the best moves, providing a challenging gameplay experience."
+      ],
+      "technologies": [
+        "{{Python}}",
+        "Pygame",
+        "{{Monte Carlo Tree Search}}",
+        "Game AI",
+        "{{Machine Learning}}"
+      ]
+    },
+    {
+      "name": "Computer Vision",
+      "year": 2023,
+      "githubUrl": "https://github.com/patelchaitany/computer-vision",
+      "content": [
+        "This repository contains implementations of {{fundamental computer vision algorithms}} and techniques, exploring the mathematical foundations of image processing.",
+        "The project includes implementations of {{corner detection}}, {{edge detection}}, {{Fourier transforms}}, and {{SIFT features}}, providing practical examples of computer vision concepts."
+      ],
+      "technologies": [
+        "{{Python}}",
+        "OpenCV",
+        "{{Image Processing}}",
+        "Canny Edge Detection",
+        "{{SIFT}}",
+        "Fourier Transform"
+      ]
+    },
+    {
+      "name": "MANGA_GEN",
+      "year": 2025,
+      "githubUrl": "https://github.com/patelchaitany/MANGA_GEN",
+      "content": [
+        "MANGA_GEN is an {{advanced AI system}} that implements an {{agentic framework}} using {{LangGraph}} to create complete manga stories from initial ideas.",
+        "The system first {{writes and reviews stories}} based on input concepts using {{NLP techniques}}, then uses a {{custom fine-tuned image generation model}} built with {{PyTorch}} and {{Hugging Face}} libraries to create the visual components of the manga."
+      ],
+      "technologies": [
+        "{{Python}}",
+        "LangGraph",
+        "{{PyTorch}}",
+        "Hugging Face",
+        "{{NLP}}",
+        "{{Agentic AI}}",
+        "Image Generation"
+      ]
+    },
+    {
+      "name": "browser-use",
+      "year": 2025,
+      "githubUrl": "https://github.com/patelchaitany/browser-use",
+      "content": [
+        "browser-use is a {{Python utility}} for {{browser automation}} and web interaction, making it easier to perform repetitive tasks and data collection from websites.",
+        "The project provides a simplified interface for common browser operations, enabling efficient web scraping and automated testing."
+      ],
+      "technologies": [
+        "{{Python}}",
+        "Selenium",
+        "{{Web Automation}}",
+        "Web Scraping",
+        "{{Browser APIs}}"
+      ]
+    },
+    {
+      "name": "HealthBud",
+      "year": 2024,
+      "githubUrl": "https://github.com/patelchaitany/HealthBud",
+      "content": [
+        "HealthBud is an {{interactive health platform}} that uses a {{questionnaire-based approach}} to identify potential disease behaviors and health concerns in users.",
+        "The platform {{connects users}} with similar health profiles to {{like-minded communities}}, facilitating information sharing and support among individuals with similar health conditions or concerns."
+      ],
+      "technologies": [
+        "{{HTML}}",
+        "CSS",
+        "{{JavaScript}}",
+        "Health Diagnostics",
+        "{{Machi}}"
+      ]
+    },
+    {
+      "name": "Guj_eng",
+      "year": 2025,
+      "githubUrl": "https://github.com/patelchaitany/Guj_eng",
+      "content": [
+        "Guj_eng is an {{innovative translation system}} that directly converts {{English text in images to Gujarati}} without requiring an intermediate OCR step.",
+        "The model was {{trained from scratch}} on the AI4Bharat dataset, enabling efficient and accurate translation of visual text content between these languages."
+      ],
+      "technologies": [
+        "{{Python}}",
+        "Computer Vision",
+        "{{Direct Image Translation}}",
+        "AI4Bharat Dataset",
+        "{{Deep Learning}}"
+      ]
+    }
+  ]
+}

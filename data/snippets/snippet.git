@@ -1,0 +1,69 @@
+#!/bin/bash
+# Example Git workflow for a feature development
+
+# Start a new feature
+echo "Starting new feature development..."
+git checkout main
+git pull origin main
+git checkout -b feature/awesome-new-feature
+
+# Make changes to files
+echo "# Making changes to codebase..."
+# ... coding work happens here ...
+
+# Stage and commit changes with a meaningful message
+git add .
+git commit -m "Add user authentication module with JWT support
+
+- Implement login and registration endpoints
+- Add JWT token generation and validation
+- Create middleware for protected routes
+- Add unit tests for auth functions"
+
+# Push changes to remote repository
+git push -u origin feature/awesome-new-feature
+
+# Create a pull request (this would typically be done in the GitHub UI)
+echo "Pull request created for code review"
+
+# After code review, make requested changes
+echo "# Making changes based on code review feedback..."
+# ... more coding work ...
+
+git add .
+git commit -m "Address code review feedback
+
+- Fix error handling in auth controller
+- Improve test coverage
+- Update documentation"
+
+git push origin feature/awesome-new-feature
+
+# After approval, merge to main (typically done via GitHub UI)
+echo "Pull request approved and merged to main"
+
+# Clean up: Update local main and delete the feature branch
+git checkout main
+git pull origin main
+git branch -d feature/awesome-new-feature
+
+# Create a release tag
+git tag -a v1.2.0 -m "Release version 1.2.0 with auth features"
+git push origin v1.2.0
+
+echo "Feature development workflow complete!"
+
+# Git aliases I use to improve productivity (these would be in .gitconfig)
+: '
+[alias]
+  co = checkout
+  cb = checkout -b
+  cm = commit -m
+  st = status
+  br = branch
+  unstage = reset HEAD --
+  last = log -1 HEAD
+  visual = !gitk
+  lg = log --color --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit
+  standup = log --since yesterday --author=$(git config user.email) --pretty=short
+' 
