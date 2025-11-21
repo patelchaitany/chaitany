@@ -1,19 +1,73 @@
 {
   "data": [
     {
-      "name": "TensorGrad",
+      "name": "MicroTensor",
       "year": 2025,
-      "githubUrl": "https://github.com/patelchaitany/TensorGrad",
+      "githubUrl": "https://github.com/patelchaitany/MicroTensor",
       "content": [
-        "TensorGrad is a {{high-performance C++ library}} for tensor operations with {{automatic gradient computation}} support, designed for machine learning applications.",
-        "The library features comprehensive {{tensor operations}} including matrix multiplication, element-wise operations, and activation functions, with full {{automatic differentiation}} capabilities for training neural networks."
+        "MicroTensor is a {{lightweight C++ neural network library}} designed specifically for the {{ESP32 and other embedded systems}}, focusing on memory efficiency and fast execution.",
+        "It provides efficient {{matrix operations}}, {{automatic differentiation}}, intrusive-pointer-based memory management, and customizable neural network components suitable for resource-constrained environments.",
+        "The library supports matrix multiplication, element-wise operations, activation functions like {{LeakyReLU}}, gradient computation, and flexible layer architecture for building small neural models on microcontrollers."
       ],
       "technologies": [
         "{{C++}}",
-        "Boost",
         "{{Automatic Differentiation}}",
+        "Embedded Systems",
         "Neural Networks",
-        "{{High-Performance Computing}}"
+        "ESP32",
+        "Memory-Efficient Design"
+      ]
+    },
+    {
+      "name": "LOWRESTIT",
+      "year": 2025,
+      "githubUrl": "https://github.com/patelchaitany/Guj_eng",
+      "demoUrl": "https://guj-eng-translator.vercel.app/",
+      "content": [
+        "LOWRESTIT is an {{OCR-free Gujarati ↔ English Translation}} system using a CLIP-based Vision Transformer.",
+        "Trained on 100k OCR–English pairs plus synthetic data; achieved 0.57 BLEU, demonstrating scalable translation for a low-resource language."
+      ],
+      "technologies": [
+        "{{Python}}",
+        "CLIP",
+        "{{Vision Transformer}}",
+        "OCR-free Translation",
+        "{{Deep Learning}}"
+      ]
+    },
+    {
+      "name": "GPU-Accelerated CV Library",
+      "year": 2025,
+      "githubUrl": "",
+      "content": [
+        "High-Performance CUDA + PyTorch library implementing common image processing filters (Sobel, Blur, RGB2GRAY, Morphology) as {{CUDA shared-memory kernels}} with coalesced access.",
+        "Exposed PyTorch bindings for integration into GPU pipelines.",
+        "Achieved up to {{1194× speedup}} over OpenCV CPU on 4096×4096 images (example: Sobel 384.83 ms → 0.322 ms)."
+      ],
+      "technologies": [
+        "{{CUDA}}",
+        "{{C++}}",
+        "PyTorch",
+        "{{High-Performance Computing}}",
+        "Image Processing"
+      ]
+    },
+    {
+      "name": "MANGA_GEN",
+      "year": 2025,
+      "githubUrl": "https://github.com/patelchaitany/MANGA_GEN",
+      "content": [
+        "MANGA_GEN is an {{advanced AI system}} that implements an {{agentic framework}} using {{LangGraph}} to create complete manga stories from initial ideas.",
+        "The system first {{writes and reviews stories}} based on input concepts using {{NLP techniques}}, then uses a {{custom fine-tuned image generation model}} built with {{PyTorch}} and {{Hugging Face}} libraries to create the visual components of the manga."
+      ],
+      "technologies": [
+        "{{Python}}",
+        "LangGraph",
+        "{{PyTorch}}",
+        "Hugging Face",
+        "{{NLP}}",
+        "{{Agentic AI}}",
+        "Image Generation"
       ]
     },
     {
@@ -31,6 +85,22 @@
         "Natural Language Processing",
         "{{Document Retrieval}}",
         "Ollama API"
+      ]
+    },
+    {
+      "name": "TensorGrad",
+      "year": 2025,
+      "githubUrl": "https://github.com/patelchaitany/TensorGrad",
+      "content": [
+        "TensorGrad is a {{high-performance C++ library}} for tensor operations with {{automatic gradient computation}} support, designed for machine learning applications.",
+        "The library features comprehensive {{tensor operations}} including matrix multiplication, element-wise operations, and activation functions, with full {{automatic differentiation}} capabilities for training neural networks."
+      ],
+      "technologies": [
+        "{{C++}}",
+        "Boost",
+        "{{Automatic Differentiation}}",
+        "Neural Networks",
+        "{{High-Performance Computing}}"
       ]
     },
     {
@@ -118,24 +188,6 @@
       ]
     },
     {
-      "name": "MANGA_GEN",
-      "year": 2025,
-      "githubUrl": "https://github.com/patelchaitany/MANGA_GEN",
-      "content": [
-        "MANGA_GEN is an {{advanced AI system}} that implements an {{agentic framework}} using {{LangGraph}} to create complete manga stories from initial ideas.",
-        "The system first {{writes and reviews stories}} based on input concepts using {{NLP techniques}}, then uses a {{custom fine-tuned image generation model}} built with {{PyTorch}} and {{Hugging Face}} libraries to create the visual components of the manga."
-      ],
-      "technologies": [
-        "{{Python}}",
-        "LangGraph",
-        "{{PyTorch}}",
-        "Hugging Face",
-        "{{NLP}}",
-        "{{Agentic AI}}",
-        "Image Generation"
-      ]
-    },
-    {
       "name": "browser-use",
       "year": 2025,
       "githubUrl": "https://github.com/patelchaitany/browser-use",
@@ -165,40 +217,6 @@
         "{{JavaScript}}",
         "Health Diagnostics",
         "{{Machi}}"
-      ]
-    },
-    {
-      "name": "LOWRESTIT",
-      "year": 2025,
-      "githubUrl": "https://github.com/patelchaitany/Guj_eng",
-      "demoUrl": "https://guj-eng-translator.vercel.app/",
-      "content": [
-        "LOWRESTIT is an {{OCR-free Gujarati ↔ English Translation}} system using a CLIP-based Vision Transformer.",
-        "Trained on 100k OCR–English pairs plus synthetic data; achieved 0.57 BLEU, demonstrating scalable translation for a low-resource language."
-      ],
-      "technologies": [
-        "{{Python}}",
-        "CLIP",
-        "{{Vision Transformer}}",
-        "OCR-free Translation",
-        "{{Deep Learning}}"
-      ]
-    },
-    {
-      "name": "GPU-Accelerated CV Library",
-      "year": 2025,
-      "githubUrl": "",
-      "content": [
-        "High-Performance CUDA + PyTorch library implementing common image processing filters (Sobel, Blur, RGB2GRAY, Morphology) as {{CUDA shared-memory kernels}} with coalesced access.",
-        "Exposed PyTorch bindings for integration into GPU pipelines.",
-        "Achieved up to {{1194× speedup}} over OpenCV CPU on 4096×4096 images (example: Sobel 384.83 ms → 0.322 ms)."
-      ],
-      "technologies": [
-        "{{CUDA}}",
-        "{{C++}}",
-        "PyTorch",
-        "{{High-Performance Computing}}",
-        "Image Processing"
       ]
     }
   ]
