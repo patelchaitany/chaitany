@@ -174,35 +174,35 @@ a:hover {
     /* Hidden on desktop as nav indicates section */
 }
 
-
-
 /* Cards/Items */
 .item-card {
     margin-bottom: 2rem;
     padding: 20px;
     border-radius: 8px;
-    transition: background-color 0.3s, border-color 0.3s, backdrop-filter 0.3s;
     cursor: pointer;
-    border: 1px solid rgba(255, 255, 255, 0.10);
-    background: rgba(255, 255, 255, 0.05);
-    /* baseline translucent */
-    backdrop-filter: blur(4px);
+    border: 1px solid transparent;
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease,
+        backdrop-filter 0.3s ease,
+        -webkit-backdrop-filter 0.3s ease;
 }
 
-.item-card:hover {
-    background: rgba(255, 255, 255, 0.15);
-    /* more translucent */
-    border-color: rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(8px);
+.item-card:hover,
+[data-theme="dark"] .item-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
 }
 
-
-
+/* Light theme */
 [data-theme="light"] .item-card:hover {
-    border-color: rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
 }
-
-
 
 .item-header {
     display: flex;
