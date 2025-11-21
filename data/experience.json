@@ -1,0 +1,37 @@
+{
+  "data": [
+    {
+      "role": "ML Research Intern",
+      "company": "Machine Learning Studies",
+      "period": "Apr 2025 – Jun 2025",
+      "content": [
+        "Implemented Saliency as Schedule (SaS) in TorchRay, improving CNN interpretability by ~20% vs Grad-CAM and Integrated Gradients.",
+        "Extended SaS to RoBERTa, enabling token-level saliency for sentiment analysis.",
+        "Conducted CNN channel-level analysis, achieving >90% IoU alignment to support interpretability-driven pruning.",
+        "Optimized GPU workflows (RTX 3090) and streamlined collaborative debugging using Linux tools (tmux, SSH)."
+      ],
+      "technologies": ["PyTorch", "TorchRay", "CNN", "RoBERTa", "Linux", "GPU Optimization"]
+    },
+    {
+      "role": "Backend Developer",
+      "company": "Serchloock",
+      "period": "Jul 2025 – Aug 2025",
+      "content": [
+        "Built and integrated backend APIs using Python + FastAPI, resolving cross-platform data inconsistencies.",
+        "Refactored CI/CD workflows with GitHub Actions and containerized services with Docker for reliable deployments.",
+        "Developed a native Android-based scraping system to automate device actions and distribute workloads — increased reliability by 50%."
+      ],
+      "technologies": ["Python", "FastAPI", "Docker", "GitHub Actions", "Android", "Web Scraping"]
+    },
+    {
+      "role": "Open-Source Contributor",
+      "company": "Cognee",
+      "period": "Sept 2025 – Oct 2025",
+      "content": [
+        "Built a Lexical Chunk Retriever, improving semantic retrieval accuracy and speed.",
+        "Diagnosed and fixed a critical graph query bug, improving memory-node retrieval reliability; contributed production-ready code merged into main."
+      ],
+      "technologies": ["Python", "Open Source", "Semantic Retrieval", "Graph Databases"]
+    }
+  ]
+}

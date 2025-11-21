@@ -168,19 +168,37 @@
       ]
     },
     {
-      "name": "Guj_eng",
+      "name": "LOWRESTIT",
       "year": 2025,
       "githubUrl": "https://github.com/patelchaitany/Guj_eng",
+      "demoUrl": "https://guj-eng-translator.vercel.app/",
       "content": [
-        "Guj_eng is an {{innovative translation system}} that directly converts {{English text in images to Gujarati}} without requiring an intermediate OCR step.",
-        "The model was {{trained from scratch}} on the AI4Bharat dataset, enabling efficient and accurate translation of visual text content between these languages."
+        "LOWRESTIT is an {{OCR-free Gujarati ↔ English Translation}} system using a CLIP-based Vision Transformer.",
+        "Trained on 100k OCR–English pairs plus synthetic data; achieved 0.57 BLEU, demonstrating scalable translation for a low-resource language."
       ],
       "technologies": [
         "{{Python}}",
-        "Computer Vision",
-        "{{Direct Image Translation}}",
-        "AI4Bharat Dataset",
+        "CLIP",
+        "{{Vision Transformer}}",
+        "OCR-free Translation",
         "{{Deep Learning}}"
+      ]
+    },
+    {
+      "name": "GPU-Accelerated CV Library",
+      "year": 2025,
+      "githubUrl": "",
+      "content": [
+        "High-Performance CUDA + PyTorch library implementing common image processing filters (Sobel, Blur, RGB2GRAY, Morphology) as {{CUDA shared-memory kernels}} with coalesced access.",
+        "Exposed PyTorch bindings for integration into GPU pipelines.",
+        "Achieved up to {{1194× speedup}} over OpenCV CPU on 4096×4096 images (example: Sobel 384.83 ms → 0.322 ms)."
+      ],
+      "technologies": [
+        "{{CUDA}}",
+        "{{C++}}",
+        "PyTorch",
+        "{{High-Performance Computing}}",
+        "Image Processing"
       ]
     }
   ]

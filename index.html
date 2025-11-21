@@ -1,621 +1,122 @@
-<!Doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#0d1117">
-    <meta name="msapplication-navbutton-color" content="#0d1117" />
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="author" content="Chaitany Patel" />
-    <meta name="description"
-        content="Hi, I'm a passionate Computer Science student and Machine Learning enthusiast. Check out my work and get in touch over here. ;)" />
-    <base href="/">
-
-    <meta property="og:url" content="https://github.com/patelchaitany">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Chaitany Patel - Computer Science Student | ML Enthusiast">
-    <meta property="og:image" content="/images/monologo-light.png">
-    <meta property="og:image:alt" content="Chaitany Patel">
-    <meta property="og:site_name" content="Chaitany Patel Portfolio">
-    <meta property="og:description"
-        content="Hi, I'm a passionate Computer Science student and Machine Learning enthusiast. Check out my work and get in touch over here. ;)">
-    <meta property="og:locale" content="en_US">
-
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Chaitany Patel - Computer Science Student | ML Enthusiast">
-    <meta name="twitter:description"
-        content="Hi, I'm a passionate Computer Science student and Machine Learning enthusiast. Check out my work and get in touch over here. ;)">
-    <meta name="twitter:image" content="/images/monologo-light.png">
-    <meta name="twitter:image:alt" content="Chaitany Patel Portfolio">
-    <meta name="twitter:site" content="@patelchaitany">
-
-    <meta property="og:image:type" content="image/webp">
-    <meta property="og:image:width" content="187">
-    <meta property="og:image:height" content="187">
-    <link href="/images/favicon-light.ico" rel="icon" media="(prefers-color-scheme: light)" />
-    <link href="/images/favicon-dark.ico" rel="icon" media="(prefers-color-scheme: dark)" />
-    <link rel="preload" as="font" href="/fonts/fira-mono-v14-latin-regular.woff2" type="font/otf"
-        crossorigin="anonymous">
-    <link rel="preload" as="font" href="/fonts/fira-mono-v14-latin-700.woff2" type="font/otf" crossorigin="anonymous">
-    <link id="min-style" rel="stylesheet" type="text/css" href="/css/tui.min.css">
-    <script src="/js/loader/loader.js"></script>
-    <script defer src="/js/direct-handlers.js"></script>
-    <title>Chaitany Patel - Computer Science Student | ML Enthusiast</title>
-    <script defer src="https://suivi.artisanweb.be/script.js"
-        data-website-id="5710c4b9-df7b-45ca-b749-8087432c74e6"></script>
-    <script>
-        // Ensure keyboard events are captured globally
-        document.addEventListener('DOMContentLoaded', function() {
-            // Focus the body on load
-            document.body.focus();
-            
-            // Refocus body whenever focus is lost
-            document.addEventListener('blur', function() {
-                setTimeout(function() {
-                    document.body.focus();
-                }, 10);
-            }, true);
-            
-            // Log keyboard events for debugging but don't handle navigation
-            document.addEventListener('keydown', function(e) {
-                // Just log, don't interfere with navigation
-                if (!['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 
-                      'h', 'j', 'k', 'l'].includes(e.key)) {
-                    console.log('Global keydown (non-navigation):', e.key);
-                }
-            }, true);
-        });
-    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chaitany Patel</title>
+    <meta name="description" content="Computer Science Student & ML Enthusiast">
+    <link rel="stylesheet" href="/css/modern.css">
+    <link rel="icon" href="/images/favicon-dark.ico">
 </head>
 
-<body class="darkmode" tabindex="-1" autofocus>
-    <script>
-        // Direct keyboard navigation implementation
-        // This bypasses all other handlers and works directly with the DOM
-        window.addEventListener('keydown', function(e) {
-            console.log('Direct keydown handler:', e.key);
-            
-            // Handle only arrow keys
-            if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
-                // Always prevent default browser behavior for arrow keys
-                e.preventDefault();
-                e.stopPropagation();
-                
-                // Get the current selected section and item
-                const selectedSection = document.querySelector('.selected-frame');
-                const selectedItem = document.querySelector('.selected-item');
-                
-                console.log('Current selection:', selectedSection?.id, selectedItem?.textContent);
-                
-                // Handle navigation based on arrow key
-                switch(e.key) {
-                    case 'ArrowLeft':
-                        // Previous section
-                        navigateSection(-1);
-                        break;
-                    case 'ArrowRight':
-                        // Next section
-                        navigateSection(1);
-                        break;
-                    case 'ArrowUp':
-                        // Previous item
-                        navigateItem(-1);
-                        break;
-                    case 'ArrowDown':
-                        // Next item
-                        navigateItem(1);
-                        break;
-                }
-            }
-        }, true);
-        
-        // Direct section navigation function
-        function navigateSection(direction) {
-            // Get all available sections in order
-            const sections = ['home', 'projects', 'skills'];
-            
-            // Find current section
-            const currentSection = document.querySelector('.selected-frame');
-            if (!currentSection) return;
-            
-            const currentIndex = sections.indexOf(currentSection.id);
-            if (currentIndex === -1) return;
-            
-            // Calculate new index with bounds checking
-            const newIndex = Math.max(0, Math.min(sections.length - 1, currentIndex + direction));
-            if (newIndex === currentIndex) return; // No change
-            
-            console.log(`Navigating from section ${currentIndex} to ${newIndex}`);
-            
-            // Remove selected-frame class from current section
-            currentSection.classList.remove('selected-frame');
-            
-            // Add selected-frame class to new section
-            const newSection = document.getElementById(sections[newIndex]);
-            if (newSection) {
-                newSection.classList.add('selected-frame');
-                
-                // Reset item index to first item
-                const items = newSection.querySelectorAll('.ui-list > div');
-                if (items.length > 0) {
-                    // Update item selection
-                    document.querySelectorAll('.selected-item').forEach(el => {
-                        el.classList.remove('selected-item');
-                    });
-                    
-                    items[0].classList.add('selected-item');
-                    
-                    // Update the index display
-                    const indexDisplay = newSection.querySelector('.list-index p');
-                    if (indexDisplay) {
-                        indexDisplay.textContent = `1 of ${items.length}`;
-                    }
-                }
-                
-                // Trigger content update
-                updateMainContent(sections[newIndex], 0);
-            }
-        }
-        
-        // Direct item navigation function
-        function navigateItem(direction) {
-            // Get current section
-            const currentSection = document.querySelector('.selected-frame');
-            if (!currentSection || currentSection.id === 'home') return;
-            
-            // Get items in current section
-            const items = currentSection.querySelectorAll('.ui-list > div');
-            if (items.length === 0) return;
-            
-            // Find current item
-            const currentItem = currentSection.querySelector('.selected-item');
-            let currentIndex = 0;
-            
-            // If there's a selected item, find its index
-            if (currentItem) {
-                for (let i = 0; i < items.length; i++) {
-                    if (items[i] === currentItem) {
-                        currentIndex = i;
-                        break;
-                    }
-                }
-            }
-            
-            // Calculate new index with bounds checking
-            const newIndex = Math.max(0, Math.min(items.length - 1, currentIndex + direction));
-            if (newIndex === currentIndex) return; // No change
-            
-            console.log(`Navigating from item ${currentIndex} to ${newIndex}`);
-            
-            // Update item selection
-            if (currentItem) {
-                currentItem.classList.remove('selected-item');
-            }
-            
-            items[newIndex].classList.add('selected-item');
-            
-            // Update the index display
-            const indexDisplay = currentSection.querySelector('.list-index p');
-            if (indexDisplay) {
-                indexDisplay.textContent = `${newIndex + 1} of ${items.length}`;
-            }
-            
-            // Trigger content update
-            updateMainContent(currentSection.id, newIndex);
-        }
-        
-        // Update main content based on selection
-        async function updateMainContent(sectionName, itemIndex) {
-            console.log(`Updating content for ${sectionName}, item ${itemIndex}`);
-            
-            try {
-                // Get main content container
-                const mainContent = document.querySelector('#main-content .container-content');
-                if (!mainContent) return;
-                
-                // Clear current content
-                mainContent.innerHTML = '<div><p>Loading content...</p></div>';
-                
-                // Fetch data
-                const response = await fetch(`/data/${sectionName}.json`);
-                if (!response.ok) throw new Error(`Failed to fetch ${sectionName}.json`);
-                
-                const { data } = await response.json();
-                
-                // Reset content
-                mainContent.innerHTML = '';
-                
-                if (sectionName === 'home') {
-                    // Home section
-                    const logoContainer = document.createElement('div');
-                    logoContainer.id = 'logo-container';
-                    
-                    const logo = document.createElement('img');
-                    logo.loading = 'eager';
-                    logo.src = '/images/logo2.svg';
-                    logo.id = 'logo';
-                    logo.alt = 'Chaitany Patel';
-                    
-                    logoContainer.appendChild(logo);
-                    mainContent.appendChild(logoContainer);
-                    
-                    const outerContainer = document.createElement('div');
-                    outerContainer.classList.add('outer-paragraph-container');
-                    
-                    const innerContainer = document.createElement('div');
-                    innerContainer.classList.add('inner-paragraph-container');
-                    
-                    // Add home content
-                    data.forEach(d => {
-                        const el = document.createElement('div');
-                        
-                        d.content.forEach(c => {
-                            const p = document.createElement('p');
-                            p.innerHTML = c.replaceAll('{{', '<span class="text-blue">').replaceAll('}}', '</span>');
-                            el.appendChild(p);
-                        });
-                        
-                        innerContainer.appendChild(el);
-                    });
-                    
-                    outerContainer.appendChild(innerContainer);
-                    mainContent.appendChild(outerContainer);
-                } else {
-                    // Projects or Skills
-                    const itemData = data[itemIndex];
-                    if (!itemData) return;
-                    
-                    const outerContainer = document.createElement('div');
-                    outerContainer.classList.add('outer-paragraph-container');
-                    
-                    const innerContainer = document.createElement('div');
-                    innerContainer.classList.add('inner-paragraph-container', 'mt-4');
-                    
-                    // Header section
-                    const header = document.createElement('div');
-                    
-                    // Title
-                    if (itemData.name) {
-                        const title = document.createElement('h1');
-                        title.innerHTML = `<span class="text-blue">${itemData.name}</span>`;
-                        header.appendChild(title);
-                    }
-                    
-                    // Year
-                    if (itemData.year) {
-                        const year = document.createElement('h2');
-                        year.innerHTML = `[Built in <span class="text-orange">${itemData.year}</span>]`;
-                        header.appendChild(year);
-                    }
-                    
-                    // Technologies
-                    if (itemData.technologies && itemData.technologies.length > 0) {
-                        const techContainer = document.createElement('div');
-                        techContainer.classList.add('technologies-row');
-                        
-                        techContainer.innerHTML = itemData.technologies
-                            .map(t => t.replace(/{{(.*?)}}/, '<span class="text-pink">$1</span>'))
-                            .join(' ');
-                        
-                        header.appendChild(techContainer);
-                    }
-                    
-                    // Buttons
-                    if (itemData.githubUrl || itemData.demoUrl) {
-                        const buttonsContainer = document.createElement('div');
-                        buttonsContainer.classList.add('buttons-container');
-                        
-                        if (itemData.githubUrl) {
-                            const githubButton = document.createElement('a');
-                            githubButton.classList.add('project-button');
-                            githubButton.href = itemData.githubUrl;
-                            githubButton.target = '_blank';
-                            githubButton.textContent = 'GitHub';
-                            buttonsContainer.appendChild(githubButton);
-                        }
-                        
-                        if (itemData.demoUrl) {
-                            const demoButton = document.createElement('a');
-                            demoButton.classList.add('project-button');
-                            demoButton.href = itemData.demoUrl;
-                            demoButton.target = '_blank';
-                            demoButton.textContent = 'Demo';
-                            buttonsContainer.appendChild(demoButton);
-                        }
-                        
-                        header.appendChild(buttonsContainer);
-                    }
-                    
-                    // Add header
-                    innerContainer.appendChild(header);
-                    
-                    // Content paragraphs
-                    if (itemData.content && itemData.content.length > 0) {
-                        itemData.content.forEach(paragraph => {
-                            const p = document.createElement('div');
-                            p.innerHTML = paragraph.replace(/{{(.*?)}}/g, '<span class="text-pink">$1</span>');
-                            innerContainer.appendChild(p);
-                        });
-                    }
-                    
-                    // Add code snippet if available (especially for skills section)
-                    if (itemData.snippet) {
-                        // Create a container for the snippet
-                        const snippetContainer = document.createElement('div');
-                        snippetContainer.classList.add('snippet-container');
-                        
-                        // Create pre and code elements
-                        const pre = document.createElement('pre');
-                        const code = document.createElement('code');
-                        
-                        // Add the language class for syntax highlighting
-                        code.classList.add(itemData.snippet);
-                        
-                        // Fetch the snippet content
-                        fetchSnippet(itemData.snippet).then(snippetText => {
-                            code.textContent = snippetText;
-                            
-                            // Apply syntax highlighting
-                            colorizeCode(code, itemData.snippet);
-                        });
-                        
-                        // Add code to pre, and pre to container
-                        pre.appendChild(code);
-                        snippetContainer.appendChild(pre);
-                        
-                        // Add snippet container to the inner container
-                        innerContainer.appendChild(snippetContainer);
-                    }
-                    
-                    outerContainer.appendChild(innerContainer);
-                    mainContent.appendChild(outerContainer);
-                }
-                
-                console.log('Content updated successfully');
-            } catch (error) {
-                console.error('Error updating content:', error);
-                
-                const mainContent = document.querySelector('#main-content .container-content');
-                if (mainContent) {
-                    mainContent.innerHTML = `<div class="error-message"><p>Error loading content: ${error.message}</p></div>`;
-                }
-            }
-        }
-        
-        // Helper function to fetch code snippets
-        async function fetchSnippet(snippetName) {
-            try {
-                const response = await fetch(`/data/snippets/snippet.${snippetName}`);
-                
-                if (!response.ok) {
-                    console.warn(`Snippet file not found: /data/snippets/snippet.${snippetName}`);
-                    return `// Code snippet for ${snippetName} not available\n// This is a placeholder for demonstration purposes`;
-                }
-                
-                return await response.text();
-            } catch (error) {
-                console.error('Error fetching snippet:', error);
-                return `// Error loading code snippet: ${error.message}`;
-            }
-        }
-        
-        // Helper function to colorize code
-        function colorizeCode(codeElement, language) {
-            if (!codeElement) return;
-            
-            const text = codeElement.textContent;
-            
-            // Define keywords for syntax highlighting
-            const javascriptKeywords = [
-                ["document", "window", "null", "undefined", "true", "false"],
-                ["function", "const", "let", "var", "return", "if", "else", "for", "while"],
-                ["addEventListener", "querySelector", "getElementById", "fetch"]
-            ];
-            
-            const keywords = {
-                js: javascriptKeywords,
-                c: [
-                    ["NULL", "true", "false"],
-                    ["typedef", "struct", "void", "return", "if", "else", "while"]
-                ],
-                cpp: [
-                    ["NULL", "true", "false"],
-                    ["class", "public", "private", "void", "return", "if", "else", "while"]
-                ],
-                python: [
-                    ["None", "True", "False"],
-                    ["def", "class", "return", "if", "else", "for", "while", "import", "from"]
-                ]
-            }[language];
-            
-            if (!keywords) return;
-            
-            let coloredText = text;
-            const colorClasses = ["text-blue", "text-orange", "text-pink"];
-            
-            keywords.forEach((subKeywords, i) => {
-                if (subKeywords.length === 0) return;
-                
-                const regex = new RegExp(`\\b(${subKeywords.join("|")})\\b`, "g");
-                coloredText = coloredText.replace(
-                    regex,
-                    match => `<span class="${colorClasses[i]}">${match}</span>`
-                );
-            });
-            
-            codeElement.innerHTML = coloredText;
-        }
-    </script>
-    <div id="main-container">
-        <div class="nav-container">
-            <img id="nav-logo" loading="eager" src="/images/logo2.svg" alt="Wallenart" decoding="async" />
-            <div id="hamburger-menu">
-                <input class="checkbox" type="checkbox" name="hamburger-toggle" aria-label="Mobile menu toggle" />
-                <div class="hamburger-lines">
-                    <span class="line line1"></span>
-                    <span class="line line2"></span>
-                    <span class="line line3"></span>
+<body>
+    <div class="layout">
+        <!-- Left Sidebar -->
+        <aside class="sidebar">
+            <div>
+                <div class="profile-header">
+                    <h1>Chaitany Patel</h1>
+                    <div class="role">Computer Science Student</div>
+                    <p class="bio">Passionate about Machine Learning, Deep Learning, and Computer Vision. Building
+                        innovative AI solutions.</p>
                 </div>
-            </div>
-        </div>
-        <div id="section-container">
-            <div id="left-section">
-                <header class="container selected-frame" id="home">
-                    <div class="container-content">
-                        <div class="title decorating-text">
-                            <p>
-                                Home
-                            </p>
-                            <div></div>
-                        </div>
-                        <p id="home-section-paragraph">
-                            Hello! I'm <span class="text-blue">Chaitany Patel</span>, a passionate Computer Science student
-                            and Machine Learning enthusiast :)
-                        </p>
-                        <p id="mobile-help">
-                            <span class="text-pink">Press</span> around to <span class="text-orange">explore</span>
-                            the website.
-                        </p>
-                    </div>
-                </header>
 
-                <div class="container" id="projects">
-                    <div class="container-content">
-                        <div class="title decorating-text">
-                            <p>Projects</p>
-                            <div></div>
-                        </div>
-                        <div class="list-index decorating-text">
-                            <p>1 of 11</p>
-                            <div></div>
-                        </div>
-                        <div class="ui-list">
-                            <div>TensorGrad</div>
-                            <div>Copilot-for-Linux</div>
-                            <div>SHI</div>
-                            <div>Piano-Roll-Generation</div>
-                            <div>2D-game-engine</div>
-                            <div>Chess</div>
-                            <div>Computer Vision</div>
-                            <div>MANGA_GEN</div>
-                            <div>browser-use</div>
-                            <div>HealthBud</div>
-                            <div>Guj_eng</div>
-                        </div>
-                    </div>
+                <nav class="nav-links">
+                    <a href="#about" class="nav-item active">
+                        <span class="nav-line"></span>
+                        <span>About</span>
+                    </a>
+                    <a href="#experience" class="nav-item">
+                        <span class="nav-line"></span>
+                        <span>Experience</span>
+                    </a>
+                    <a href="#projects" class="nav-item">
+                        <span class="nav-line"></span>
+                        <span>Projects</span>
+                    </a>
+                </nav>
+            </div>
+
+            <div class="footer-actions">
+                <button id="theme-toggle" aria-label="Toggle theme"
+                    style="background: none; border: none; cursor: pointer; padding: 0; color: var(--text-muted);">
+                    <!-- Moon Icon (Dark Mode) -->
+                    <svg class="theme-icon moon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"
+                        style="display: block;">
+                        <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"></path>
+                    </svg>
+                    <!-- Sun Icon (Light Mode) -->
+                    <svg class="theme-icon sun" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"
+                        style="display: none;">
+                        <path
+                            d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z" />
+                    </svg>
+                </button>
+                <div class="social-links">
+                    <a href="https://github.com/patelchaitany" target="_blank" aria-label="GitHub">
+                        <svg class="social-icon" viewBox="0 0 16 16" version="1.1" aria-hidden="true">
+                            <path fill-rule="evenodd"
+                                d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+                            </path>
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/chaitany-patel-7936aa252/" target="_blank"
+                        aria-label="LinkedIn">
+                        <svg class="social-icon" viewBox="0 0 24 24">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                        </svg>
+                    </a>
+                    <a href="mailto:patelchaitany93@gmail.com" aria-label="Email">
+                        <svg class="social-icon" viewBox="0 0 24 24">
+                            <path
+                                d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z" />
+                        </svg>
+                    </a>
                 </div>
-                <div class="container" id="skills">
-                    <div class="container-content">
-                        <div id="skills-title" class="title decorating-text">
-                            <p>
-                                Skills - Tools
-                            </p>
-                            <div></div>
-                        </div>
-                        <div id="skills-index" class="list-index decorating-text">
-                            <p>1 of 8</p>
-                            <div></div>
-                        </div>
-                        <div class="ui-list">
-                            <div><img src="/images/c.svg" alt="" decoding="async" />C/C++</div>
-                            <div><img src="/images/python.svg" alt="" decoding="async" />Python</div>
-                            <div><img src="/images/ai.svg" alt="" decoding="async" />Machine Learning</div>
-                            <div><img src="/images/ai.svg" alt="" decoding="async" />Computer Vision</div>
-                            <div><img src="/images/ai.svg" alt="" decoding="async" />Deep Learning</div>
-                            <div><img src="/images/git.svg" alt="" decoding="async" />Git</div>
-                            <div><img src="/images/linux.svg" alt="" decoding="async" />Linux</div>
-                            <div><img src="/images/ai.svg" alt="" decoding="async" />AI Assisted Programming</div>
-                        </div>
-                    </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- About Section -->
+            <section id="about" class="section">
+                <div class="section-title">About</div>
+                <div class="item-description">
+                    <p>I'm a Computer Science student with a strong focus on <span
+                            style="color: var(--accent-color);">Machine Learning</span> and <span
+                            style="color: var(--accent-color);">Deep Learning</span>. I love building innovative
+                        projects and contributing to open source. Currently exploring Computer Vision and Generative AI.
+                    </p>
+                    <br>
+                    <p>I have experience with Python, C++, PyTorch, and TensorFlow. I enjoy solving complex problems and
+                        optimizing performance for AI applications.</p>
                 </div>
-            </div>
-            <div id="right-section">
-                <div class="container h-fill" id="main-content">
-                    <div class="container-content">
-                        <div id="logo-container">
-                            <img loading="eager" src="/images/logo2.svg" id="logo" alt="Wallenart" decoding="async" />
-                        </div>
-                        <div class="outer-paragraph-container">
-                            <div class="inner-paragraph-container">
-                                <div>
-                                    <p>Hi, I'm <span class="text-blue">Chaitany</span> Patel 🤙</p>
-                                    <p>A <span class="text-orange">Computer Science</span> student and
-                                        <span class="text-orange">Machine Learning</span> enthusiast.
-                                    </p>
-                                </div>
-                                <div>
-                                    <p>My primary focus is on <span class="text-pink">Machine Learning</span> and <span class="text-pink">Deep Learning</span>,
-                                        with experience in developing various AI applications.
-                                    </p>
-                                    <p>I also enjoy programming in <span class="text-pink">C++</span>
-                                        and building <span class="text-pink">innovative projects</span>.</p>
-                                </div>
-                                <div>
-                                    <p>I have a strong interest in <span class="text-orange">Computer Vision</span> and
-                                        <span class="text-orange">Generative AI</span>, with projects in both areas.
-                                    </p>
-                                    <p>I'm a <span class="text-pink">passionate</span> developer, always looking
-                                        for new challenges and opportunities to learn and grow.</p>
-                                </div>
-                                <div>
-                                    <p>You can connect with me on <a href="https://www.linkedin.com/in/chaitany-patel-7936aa252/" target="_blank"
-                                            class="text-blue">LinkedIn</a>.</p>
-                                    <p>Check out my projects and code on <a href="https://github.com/patelchaitany" target="_blank"
-                                            class="text-pink">GitHub</a>.</p>
-                                    <p>Feel free to email me at <a href="mailto:patelchaitany93@gmail.com"
-                                            class="text-orange">patelchaitany93@gmail.com</a>.
-                                    </p>
-                                </div>
-                                <div id="desktop-help">
-                                    <p><span class="text-pink">Click</span> on a section on the left to learn
-                                        more about
-                                        my <span class="text-blue">work</span> and past <span
-                                            class="text-orange">experiences</span>.</p>
-                                    <p>You can also <span class="text-orange">navigate</span> through the
-                                        sections using
-                                        the <span class="text-blue">arrow keys</span> or <span class="text-orange">Vim
-                                            motions</span>.</p>
-                                </div>
-                                <p id="mobile-help">
-                                    <span class="text-pink">Press</span> the menu button at the top-right of the
-                                    screen
-                                    to
-                                    start <span class="text-orange">exploring</span>
-                                    the website.
-                                </p>
-                                <div class="bible-verse">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            </section>
+
+            <!-- Experience Section -->
+            <section id="experience" class="section">
+                <div class="section-title">Experience</div>
+                <div id="experience-container">
+                    <!-- Experience items will be injected here -->
                 </div>
-            </div>
-        </div>
-        <footer class="container text-blue" id="footer">
-            <div class="footer-item" id="footer-help">
-                &lt;pgup&gt;/&lt;pgdown&gt;: Scroll,
-                &lt;left&gt;/&lt;right&gt;: Switch section,
-                &lt;1-4&gt;: Jump to section,
-                &lt;up&gt;/&lt;down&gt;: Switch item
-                <span class="text-pink">
-                    (or just use the mouse)
-                </span>
-            </div>
-            <div class="footer-item">
-                <a class="text-blue" href="mailto:patelchaitany93@gmail.com">
-                    Email
-                </a>
-                <a class="text-blue" href="https://github.com/patelchaitany" target="_blank">
-                    GitHub
-                </a>
-                <a class="text-pink" href="https://www.linkedin.com/in/chaitany-patel-7936aa252/" target="_blank">
-                    LinkedIn
-                </a>
-            </div>
-        </footer>
+            </section>
+
+            <!-- Projects Section -->
+            <section id="projects" class="section">
+                <div class="section-title">Projects</div>
+                <div id="projects-container">
+                    <!-- Project items will be injected here -->
+                </div>
+            </section>
+
+            <footer style="margin-top: 60px; color: var(--text-muted); font-size: 0.85rem;">
+                <p>© 2025 Chaitany Patel. Inspired by chanhdai.com.</p>
+            </footer>
+        </main>
     </div>
+
+    <script src="/js/modern.js"></script>
 </body>
 
 </html>
