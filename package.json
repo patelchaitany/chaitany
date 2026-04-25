@@ -1,25 +1,20 @@
 {
-  "name": "portfolio",
+  "name": "chaitany-portfolio",
+  "private": true,
   "version": "1.0.0",
-  "description": "![image](https://github.com/zyriab/portfolio/assets/2111910/4562131f-4fca-4e18-861b-25ea53961eaa)",
-  "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "http-server -p 8080"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/zyriab/portfolio.git"
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-router-dom": "^7.5.0"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/zyriab/portfolio/issues"
-  },
-  "homepage": "https://github.com/zyriab/portfolio#readme",
   "devDependencies": {
-    "http-server": "^14.1.1"
+    "@vitejs/plugin-react": "^4.4.1",
+    "vite": "^6.3.0"
   }
 }

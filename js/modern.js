@@ -1,195 +1,187 @@
 document.addEventListener('DOMContentLoaded', () => {
     initTheme();
+    setupThemeToggle();
     fetchExperience();
     fetchProjects();
-    setupNavigation();
-    setupThemeToggle();
-
-    if (typeof GitHubCalendar !== 'undefined') {
-        GitHubCalendar(".calendar", "patelchaitany", {
-            responsive: true,
-            tooltips: true
-        }).then(r => {
-            console.log("GitHub Calendar loaded", r);
-        }).catch(e => {
-            console.error("GitHub Calendar error:", e);
-            document.querySelector('.calendar').innerHTML = "Error loading calendar: " + e.message;
-        });
-    } else {
-        console.error("GitHubCalendar is not defined");
-        document.querySelector('.calendar').innerHTML = "Error: GitHubCalendar library not loaded.";
-    }
+    setupScrollTop();
+    loadGitHubCalendar();
 });
 
 function initTheme() {
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    updateThemeIcon(savedTheme);
+    const saved = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', saved);
+    updateThemeIcon(saved);
 }
 
 function setupThemeToggle() {
-    const toggleBtn = document.getElementById('theme-toggle');
-    toggleBtn.addEventListener('click', () => {
-        const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-
-        document.documentElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-        updateThemeIcon(newTheme);
+    const btn = document.getElementById('theme-toggle');
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+        const current = document.documentElement.getAttribute('data-theme') || 'dark';
+        const next = current === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        updateThemeIcon(next);
     });
 }
 
 function updateThemeIcon(theme) {
-    const moonIcon = document.querySelector('.theme-icon.moon');
-    const sunIcon = document.querySelector('.theme-icon.sun');
+    const moon = document.querySelector('.theme-icon.moon');
+    const sun = document.querySelector('.theme-icon.sun');
+    if (!moon || !sun) return;
+    moon.style.display = theme === 'dark' ? 'block' : 'none';
+    sun.style.display = theme === 'light' ? 'block' : 'none';
+}
 
-    if (theme === 'dark') {
-        moonIcon.style.display = 'block';
-        sunIcon.style.display = 'none';
-    } else {
-        moonIcon.style.display = 'none';
-        sunIcon.style.display = 'block';
-    }
+function setupScrollTop() {
+    const btn = document.getElementById('scroll-top');
+    if (!btn) return;
+    window.addEventListener('scroll', () => {
+        btn.classList.toggle('visible', window.scrollY > 400);
+    });
+    btn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
+
+function loadGitHubCalendar() {
+    if (typeof GitHubCalendar === 'undefined') return;
+    GitHubCalendar("#github-calendar", "patelchaitany", {
+        responsive: true,
+        tooltips: true
+    }).catch(e => {
+        const el = document.getElementById('github-calendar');
+        if (el) el.innerHTML = '<p style="color:var(--text-muted);font-size:0.85rem;">Could not load GitHub contributions.</p>';
+    });
 }
 
 async function fetchExperience() {
     try {
-        const response = await fetch('/data/experience.json');
-        if (!response.ok) throw new Error('Failed to fetch experience data');
-        const { data } = await response.json();
+        const resp = await fetch('data/experience.json');
+        if (!resp.ok) throw new Error('Failed');
+        const { data } = await resp.json();
         renderExperience(data);
-    } catch (error) {
-        console.error('Error loading experience:', error);
+    } catch (e) {
+        console.error('Error loading experience:', e);
     }
 }
 
 async function fetchProjects() {
     try {
-        const response = await fetch('/data/projects.json');
-        if (!response.ok) throw new Error('Failed to fetch projects data');
-        const { data } = await response.json();
+        const resp = await fetch('data/projects.json');
+        if (!resp.ok) throw new Error('Failed');
+        const { data } = await resp.json();
         renderProjects(data);
-    } catch (error) {
-        console.error('Error loading projects:', error);
+    } catch (e) {
+        console.error('Error loading projects:', e);
     }
 }
 
-function renderExperience(experienceList) {
+function stripMustache(str) {
+    return str.replace(/\{\{/g, '').replace(/\}\}/g, '');
+}
+
+function renderExperience(list) {
     const container = document.getElementById('experience-container');
     if (!container) return;
 
-    experienceList.forEach(exp => {
+    list.forEach((exp, i) => {
         const card = document.createElement('div');
-        card.className = 'item-card';
+        card.className = 'exp-card';
 
-        const techStack = exp.technologies ? exp.technologies.map(t => `<span class="tag">${t}</span>`).join('') : '';
+        const techs = (exp.technologies || [])
+            .map(t => `<span class="tag">${t}</span>`).join('');
+
+        const bullets = exp.content
+            .map(item => `<li>${item}</li>`).join('');
 
         card.innerHTML = `
-            <div class="item-header">
-                <div class="item-title">${exp.role} · ${exp.company}</div>
-                <div class="item-date">${exp.period}</div>
+            <div class="exp-card-header" onclick="this.parentElement.querySelector('.exp-body').classList.toggle('hidden');this.querySelector('.exp-toggle').classList.toggle('open')">
+                <div class="exp-company-info">
+                    <div class="exp-company-icon">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="exp-company">${exp.company}</h3>
+                        <p class="exp-role">${exp.role}</p>
+                        <p class="exp-period">${exp.period}</p>
+                    </div>
+                </div>
+                <button class="exp-toggle open" aria-label="Toggle details">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </button>
             </div>
-            <div class="item-description">
-                <ul>
-                    ${exp.content.map(item => `<li>${item}</li>`).join('')}
-                </ul>
-            </div>
-            <div class="tags">
-                ${techStack}
+            <div class="exp-body">
+                <ul>${bullets}</ul>
+                <div class="tags">${techs}</div>
             </div>
         `;
         container.appendChild(card);
     });
 }
 
-function renderProjects(projectsList) {
+function renderProjects(list) {
     const container = document.getElementById('projects-container');
     if (!container) return;
 
-    // Sort by year desc
-    projectsList.sort((a, b) => b.year - a.year);
+    list.sort((a, b) => b.year - a.year);
 
-    projectsList.forEach(project => {
+    const topProjects = list.slice(0, 6);
+
+    topProjects.forEach((project, i) => {
         const card = document.createElement('div');
-        card.className = 'item-card';
+        card.className = 'project-card';
 
-        // Process content to remove mustache brackets for display
-        const description = project.content[0].replace(/{{/g, '').replace(/}}/g, '');
+        const desc = project.content
+            .map(c => `<p>${stripMustache(c)}</p>`).join('');
 
-        const techStack = project.technologies.map(t => {
-            const cleanTech = t.replace(/{{/g, '').replace(/}}/g, '');
-            return `<span class="tag">${cleanTech}</span>`;
-        }).join('');
+        const techs = project.technologies
+            .map(t => `<span class="tag">${stripMustache(t)}</span>`).join('');
 
-        let linksHtml = '';
+        let links = '';
         if (project.githubUrl) {
-            linksHtml += `
-                <a href="${project.githubUrl}" target="_blank" class="link-btn">
-                    <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="margin-right: 4px;"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
-                    GitHub
-                </a>`;
+            links += `<a href="${project.githubUrl}" target="_blank" class="project-link" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>`;
         }
         if (project.demoUrl) {
-            linksHtml += `
-                <a href="${project.demoUrl}" target="_blank" class="link-btn">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="margin-right: 4px;"><path d="M14 3h7v7h-2V6.414l-8.293 8.293-1.414-1.414L17.586 5H14V3zm-2 14v2H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7h-7z"/></svg>
-                    Demo
-                </a>`;
+            links += `<a href="${project.demoUrl}" target="_blank" class="project-link" aria-label="Demo">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </a>`;
         }
 
+        const isOpen = i < 2;
+
         card.innerHTML = `
-            <div class="item-header">
-                <div class="item-title">${project.name}</div>
-                <div class="item-date">${project.year}</div>
+            <div class="project-header" onclick="toggleProject(this)">
+                <div class="project-title-wrap">
+                    <div class="project-icon">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="project-name">${project.name}</h3>
+                        <p class="project-year">${project.year}</p>
+                    </div>
+                </div>
+                <div class="project-actions">
+                    ${links}
+                    <button class="exp-toggle ${isOpen ? 'open' : ''}" aria-label="Toggle details">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                </div>
             </div>
-            <div class="item-description">
-                <p>${description}</p>
-            </div>
-            <div class="tags">
-                ${techStack}
-            </div>
-            <div class="item-links">
-                ${linksHtml}
+            <div class="project-body ${isOpen ? 'open' : ''}">
+                ${desc}
+                <div class="tags">${techs}</div>
             </div>
         `;
         container.appendChild(card);
     });
 }
 
-function setupNavigation() {
-    const navItems = document.querySelectorAll('.nav-item');
-    const sections = document.querySelectorAll('section');
-
-    // Smooth scroll
-    navItems.forEach(item => {
-        item.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetId = item.getAttribute('href').substring(1);
-            const targetSection = document.getElementById(targetId);
-
-            window.scrollTo({
-                top: targetSection.offsetTop - 80,
-                behavior: 'smooth'
-            });
-        });
-    });
-
-    // Active state on scroll
-    window.addEventListener('scroll', () => {
-        let current = '';
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (pageYOffset >= (sectionTop - 200)) {
-                current = section.getAttribute('id');
-            }
-        });
-
-        navItems.forEach(item => {
-            item.classList.remove('active');
-            if (item.getAttribute('href').includes(current)) {
-                item.classList.add('active');
-            }
-        });
-    });
+function toggleProject(header) {
+    const body = header.nextElementSibling;
+    const toggle = header.querySelector('.exp-toggle');
+    body.classList.toggle('open');
+    toggle.classList.toggle('open');
 }
