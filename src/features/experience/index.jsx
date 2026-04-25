@@ -29,7 +29,7 @@ export default function ExperiencePage() {
                 onClick={() => setOpenIdx(openIdx === i ? -1 : i)}
               >
                 <div>
-                  <h3 className="timeline-role">{exp.role}</h3>
+                  <h3 className="timeline-role">{exp.role}{exp.company ? ` · ${exp.company}` : ''}</h3>
                   <div className="timeline-meta">
                     <span className="timeline-type">{exp.type}</span>
                     <span className="timeline-period">{exp.period}</span>

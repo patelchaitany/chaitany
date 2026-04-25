@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import SectionWrapper from '../../components/ui/SectionWrapper'
 import HeroSection from './HeroSection'
-import { aboutText, whatIDo, openSourcePRs, projects, skills } from '../../data/personal'
+import { aboutText, whatIDo, openSourcePRs, projects, skills, experience } from '../../data/personal'
 
 const skillColorMap = {
   Python: '#facc15', 'C++': '#3b82f6', C: '#3b82f6', Go: '#14b8a6',
@@ -25,8 +25,11 @@ const skillSections = [
   { title: 'Subjects', key: 'subjects' },
 ]
 
+const timelineColors = ['#facc15', '#f97316', '#22c55e', '#3b82f6']
+
 export default function AboutMe() {
   const [openProject, setOpenProject] = useState(0)
+  const [openExp, setOpenExp] = useState(0)
 
   return (
     <>
@@ -56,6 +59,50 @@ export default function AboutMe() {
               </div>
             ))}
           </div>
+        </div>
+      </SectionWrapper>
+
+      <SectionWrapper title="Experience">
+        <div className="timeline">
+          <div className="timeline-line" />
+          {experience.map((exp, i) => (
+            <div key={i} className="timeline-item">
+              <div className="timeline-marker">
+                <div className="timeline-number"
+                  style={{ background: timelineColors[i % timelineColors.length] }}>
+                  {i + 1}
+                </div>
+                <div className="timeline-arrow" />
+              </div>
+              <div className={`timeline-card${openExp === i ? ' open' : ''}`}>
+                <div className="timeline-card-header"
+                  onClick={() => setOpenExp(openExp === i ? -1 : i)}>
+                  <div>
+                    <h3 className="timeline-role">
+                      {exp.role}{exp.company ? ` · ${exp.company}` : ''}
+                    </h3>
+                    <div className="timeline-meta">
+                      <span className="timeline-type">{exp.type}</span>
+                      <span className="timeline-period">{exp.period}</span>
+                    </div>
+                  </div>
+                  <span className="timeline-toggle">{openExp === i ? '−' : '+'}</span>
+                </div>
+                {openExp === i && (
+                  <div className="timeline-card-body">
+                    <ul>
+                      {exp.content.map((item, j) => <li key={j}>{item}</li>)}
+                    </ul>
+                    <div className="project-card-tags">
+                      {exp.technologies.map((t, j) => (
+                        <span key={j} className="tag-brutal">{t}</span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          ))}
         </div>
       </SectionWrapper>
 

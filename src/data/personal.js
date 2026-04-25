@@ -66,14 +66,15 @@ export const whatIDo = [
 export const experience = [
   {
     role: "SWE Intern",
+    company: "Red Hat",
     type: "Current",
     period: "2026 — Present",
     content: [
-      "Working on an open-source feature store for ML used in production worldwide.",
-      "Migrated the MCP server from fastapi_mcp to the MCP Python SDK, eliminating RecursionError on recursive Pydantic schemas and adding LLM-friendly flat tool schemas.",
+      "Working on MLOps and Agentic AI — building and maintaining an open-source feature store for ML used in production worldwide.",
       "Built OpenAI-compatible vector store search API with typed filters, value_num columns, and 480+ lines of unit/integration tests.",
       "Exposed registry endpoints on the feature server for MCP access, enabling AI agents to introspect feature views, entities, and data sources.",
       "Built DocEmbedder — end-to-end document ingestion pipeline for RAG workflows (merged to main).",
+      "Developed Agent skills and MCP tooling to integrate feature stores with LLM-based agentic systems.",
     ],
     technologies: ["Python", "Feast", "MCP", "FastAPI", "Go", "Kubernetes", "Docker"],
     prs: [
@@ -85,6 +86,7 @@ export const experience = [
   },
   {
     role: "Research Intern",
+    company: "Stealth AI Startup",
     type: "Internship",
     period: "Apr 2025 — Jun 2025",
     content: [
@@ -98,6 +100,7 @@ export const experience = [
   },
   {
     role: "Back End Developer",
+    company: "Searchlook",
     type: "Internship",
     period: "Jul 2025 — Aug 2025",
     content: [
@@ -110,6 +113,7 @@ export const experience = [
   },
   {
     role: "Open-Source Contributor",
+    company: "Cognee / sktime",
     type: "Open Source",
     period: "Sept 2025 — Present",
     content: [
