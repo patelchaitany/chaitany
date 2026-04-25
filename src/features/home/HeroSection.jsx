@@ -4,13 +4,6 @@ export default function HeroSection() {
   return (
     <div className="hero">
       <div className="hero-left">
-        <div className="hero-badge">
-          <span className="badge badge-green">
-            <span className="sidebar-status-dot" style={{ width: 6, height: 6 }} />
-            {personal.status}
-          </span>
-        </div>
-
         <h1 className="hero-heading">
           ML & Software Engineer building{' '}
           <span className="highlight">AI systems</span> with{' '}

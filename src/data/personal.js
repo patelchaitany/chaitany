@@ -12,8 +12,10 @@ export const personal = {
   college: "IIIT Vadodara",
   degree: "B.Tech Computer Science",
   gradYear: "2026",
-  status: "Open to Opportunities",
-  currentWork: "ML, NLP, Computer Vision, XAI, RAG",
+  codeforces: "https://codeforces.com/profile/chaitany5251",
+  codeforcesHandle: "chaitany5251",
+  kaggle: "https://www.kaggle.com/chaitanypatel",
+  kaggleHandle: "chaitanypatel",
 };
 
 export const aboutText = [
@@ -136,7 +138,7 @@ export const projects = [
   {
     name: "BitTorrent Client",
     year: 2025,
-    githubUrl: "https://github.com/patelchaitany",
+    githubUrl: "https://github.com/patelchaitany/bit_torrent_v1",
     description: "Lightweight BitTorrent client with tracker discovery (HTTP/UDP), DHT-based peer discovery (BEP 5), peer exchange (PEX), parallel block requests, magnet metadata fetching, and automatic peer replenishment.",
     technologies: ["Python", "Networking", "DHT", "UDP", "BitTorrent Protocol"],
   },
@@ -239,6 +241,61 @@ export const education = [
     degree: "B.Tech in Computer Science",
     period: "2022 — 2026",
     tags: ["Computer Science", "Data Structures", "Algorithms", "Machine Learning"],
+  },
+];
+
+export const codingProfiles = [
+  {
+    name: "Codeforces",
+    handle: "chaitany5251",
+    url: "https://codeforces.com/profile/chaitany5251",
+    color: "#1F8ACB",
+  },
+  {
+    name: "Kaggle",
+    handle: "chaitanypatel",
+    url: "https://www.kaggle.com/chaitanypatel",
+    color: "#20BEFF",
+  },
+  {
+    name: "GitHub",
+    handle: "patelchaitany",
+    url: "https://github.com/patelchaitany",
+    color: "#111",
+  },
+  {
+    name: "LinkedIn",
+    handle: "chaitany-patel",
+    url: "https://www.linkedin.com/in/chaitany-patel-7936aa252/",
+    color: "#0077B5",
+  },
+];
+
+export const achievements = [
+  {
+    title: "Amazon ML Challenge",
+    detail: "Top 1,000 / 72,000+ — developed a high-speed OCR system.",
+    icon: "🥇",
+  },
+  {
+    title: "AWS DeepRacer",
+    detail: "Top 10% in India — reinforcement learning for autonomous driving.",
+    icon: "🏎️",
+  },
+];
+
+export const certifications = [
+  {
+    title: "Fundamentals of Deep Learning",
+    issuer: "NVIDIA",
+    topics: "CNNs, Transfer Learning, Model Tuning",
+    url: "https://learn.nvidia.com/certificates?id=oQ42OU6PQlGkBrvZUH7QKg",
+  },
+  {
+    title: "Computer Vision",
+    issuer: "Kaggle",
+    topics: "Image classification, object detection, augmentation",
+    url: "https://www.kaggle.com/learn/certification/chaitanypatel/computer-vision",
   },
 ];
 

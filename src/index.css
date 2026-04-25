@@ -770,6 +770,152 @@ p {
   }
 }
 
+/* --- CODING PROFILES --- */
+.profiles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.profile-card {
+  border: var(--border);
+  background: var(--white);
+  box-shadow: var(--shadow-sm);
+  padding: 20px 16px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.1s, box-shadow 0.1s;
+  text-decoration: none;
+  display: block;
+}
+
+.profile-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #000;
+}
+
+.profile-card-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+}
+
+.profile-card-name {
+  font-size: 0.75rem;
+  margin-bottom: 4px;
+}
+
+.profile-card-handle {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.profile-card-arrow {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* --- ACHIEVEMENTS --- */
+.achievements-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.achievement-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  border: var(--border);
+  padding: 16px;
+  background: var(--white);
+}
+
+.achievement-icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border: var(--border);
+  background: var(--yellow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.achievement-title {
+  font-size: 0.7rem;
+  margin-bottom: 4px;
+}
+
+.achievement-detail {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+/* --- CERTIFICATIONS --- */
+.cert-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cert-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border: var(--border);
+  padding: 16px;
+  background: var(--white);
+  text-decoration: none;
+  color: var(--text);
+  transition: box-shadow 0.1s;
+}
+
+.cert-card:hover {
+  box-shadow: var(--shadow-xs);
+}
+
+.cert-title {
+  font-size: 0.7rem;
+  margin-bottom: 4px;
+}
+
+.cert-issuer {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--blue);
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.cert-topics {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.cert-link {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--blue);
+  border: 1px solid var(--blue);
+  padding: 4px 10px;
+  flex-shrink: 0;
+}
+
+.cert-card:hover .cert-link {
+  background: var(--blue);
+  color: var(--white);
+}
+
 /* --- BLANK PAGE --- */
 .blank-page {
   display: flex;

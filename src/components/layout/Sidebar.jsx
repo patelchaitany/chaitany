@@ -13,13 +13,15 @@ export default function Sidebar() {
         <div className="sidebar-role">{personal.role}</div>
       </div>
 
-      <div className="sidebar-status">
-        <span className="sidebar-status-dot" />
-        {personal.status}
-      </div>
-
-      <div style={{ fontSize: '0.7rem', color: '#666', fontFamily: "'Roboto Mono', monospace" }}>
-        {personal.currentWork}
+      <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+        <a href={personal.linkedin} target="_blank" rel="noreferrer"
+          style={{ fontSize: '0.65rem', color: '#0077B5', border: '1px solid #0077B5', padding: '2px 6px', fontFamily: "'Roboto Mono', monospace" }}>
+          LinkedIn
+        </a>
+        <a href={personal.codeforces} target="_blank" rel="noreferrer"
+          style={{ fontSize: '0.65rem', color: '#1F8ACB', border: '1px solid #1F8ACB', padding: '2px 6px', fontFamily: "'Roboto Mono', monospace" }}>
+          Codeforces
+        </a>
       </div>
 
       <nav className="sidebar-nav">
